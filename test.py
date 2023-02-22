@@ -95,6 +95,7 @@ def Search_Word():
         print('Enter a Verb: ', end='')
         new_verb = re.sub(r'VERB', f'\1{input()}', new_adjective)
         print(new_verb)
+        print('Thx for your the program')
     else:
         print('It doesnt have')
 
