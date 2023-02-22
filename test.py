@@ -113,4 +113,17 @@ def Check_Folders():
             for fileName in fileNames:
                 print(f'File Name is: {fileName}')
 
-Check_Folders()
+def Delete_Files():
+
+    filePath = os.walk('/media/DriverH/Python/tmp')
+
+    for folderName, _null, fileName in filePath:
+        for fileNames in fileName:
+            match = re.search(".jpg.json$", fileNames)
+
+            if match:
+                print(f'it matches: {fileNames}')
+            else:
+                print('dont match')
+            
+Delete_Files()
