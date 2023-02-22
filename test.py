@@ -2,6 +2,8 @@ import random
 import pyperclip
 import re
 import os
+import webbrowser
+import sys
 from typing import Dict
 
 def my_function():
@@ -125,5 +127,12 @@ def Delete_Files():
                 print(f'it matches: {fileNames}')
             else:
                 print('dont match')
-            
-Delete_Files()
+
+def Search_Address():
+    if len(sys.argv) > 1:
+        address = ' '.join(sys.argv[1:])
+        print(address)
+
+    webbrowser.open('https://www.google.com/maps/place/' + address)
+
+Search_Address()
