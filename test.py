@@ -85,6 +85,7 @@ def Copy_Paster():
     print(myCopy)
 
 def Search_Word():
+
     p = 'The NOUN panda walked to the ADJECTIVE and then VERB. A nearby NOUN was unaffected by these events'
     pattern = re.search(r'(\bNOUN\b).*(\bADJECTIVE\b).*(\bVERB\b)', p)
     if pattern:
@@ -95,8 +96,10 @@ def Search_Word():
         print('Enter a Verb: ', end='')
         new_verb = re.sub(r'VERB', f'\1{input()}', new_adjective)
         print(new_verb)
-        print('Thx for your the program')
+        myFile = open('/media/DriverH/Python/test.txt', 'a')
+        myFile.write(f'{new_verb}')
+        myFile.close()
     else:
-        print('It doesnt have')
+        print('It doesnt have.')
 
 Search_Word()
