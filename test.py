@@ -1,6 +1,7 @@
 import random
 import pyperclip
 import re
+import os
 from typing import Dict
 
 def my_function():
@@ -102,4 +103,14 @@ def Search_Word():
     else:
         print('It doesnt have.')
 
-Search_Word()
+def Check_Folders():
+    check = os.walk('/media/gamedisk/Games')
+
+    for folderName, subfolders, fileNames in check:
+        print(f'Current Folder is: {folderName}')
+        for subfolder in subfolders:
+            print(f'Subfolder is: {subfolder}')
+            for fileName in fileNames:
+                print(f'File Name is: {fileName}')
+
+Check_Folders()
