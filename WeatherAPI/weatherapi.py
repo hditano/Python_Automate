@@ -1,16 +1,18 @@
 import requests
 import json
-import sys
+import argparse
 
 def Process_Weather():
     
-    CITY = 'Buenos Aires'
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--city', help = 'please give a city', required= True)
+    CITY = parser.parse_args()
     API_KEY = '17a2808ca578d767dbb78b81bb10b171'
-    r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={CITY}&appid={API_KEY}')
+    r = requests.get(f'https://api.openweathermap.org/data/2.5/weather?q={CITY.city}&appid={API_KEY}')
     r.raise_for_status()
     temp = {}
-
-    args = sys.argv[1:]
+    
+    print(CITY)
 
     result = json.loads(r.text)
   
@@ -22,9 +24,14 @@ def Process_Weather():
         temp_temperature = temp["Temperature"]
         temp["Temperature"] = temp_temperature - 273.15
         temp["Humidity"] = result["main"]["humidity"]
-        temp["Weather"] = result["weather"]
+        for item in result["weather"]:
+            temp["Description"] = item["description"]
     
 
-    print(temp)
+    print('--- Current Weather ---')
+    print(f'City: {temp["City"]} | Country: {temp["Country"]}')
+    print(f'Wind: {temp["Wind"]}   | Temperature: {temp["Temperature"]}')
+    print(f'Humidity: {temp["Humidity"]} | Description: {temp["Description"]}')
+    
 
 Process_Weather()
