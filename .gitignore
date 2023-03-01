@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+/WebScrapper/lib64
 lib64/
 bin/
 build/
