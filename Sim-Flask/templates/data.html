@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        setInterval(function() {
+          $.ajax({
+            url: '/my_variable',
+            type: 'GET',
+            success: function(response) {
+              $('#my-variable').text(response);
+            },
+            error: function(error) {
+              console.log(error);
+            }
+          });
+        }, 5000);
+      });
+    </script>
+  </head>
+  <body>
+    <div id="my-variable"></div>
+  </body>
+</html>
