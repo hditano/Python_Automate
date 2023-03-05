@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {{ turbo() }}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+          $(document).ready(function() {
+        setInterval(function() {
+          $.ajax({
+            url: '/my_variable',
+            type: 'GET',
+            success: function(response) {
+              $('#my-variable').text(response);
+            },
+            error: function(error) {
+              console.log(error);
+            }
+          });
+        }, 5000);
+      });
+      </script>
 </head>
 <body>
-    <div id="load">
-        <p>Altitude: {{ altitude }}</p>
-        <p>Speed: {{ speed }}</p>
+    <div>
+        <p>Altitude: {{ variable }}</p>
+        <p>Speed: {{ altitude }}</p>
     </div>
 </body>
 </html>
