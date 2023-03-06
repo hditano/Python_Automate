@@ -5,20 +5,16 @@
         
         <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
         <script type="text/javascript" src="/eel.js"></script>
+        <script src="main.js"></script>
         <script type="text/javascript">
-        
-        eel.expose(say_hello_js);               // Expose this function to Python
-        function say_hello_js(x) {
-            console.log("Hello from " + x);
-        }
-        
-        say_hello_js("Javascript World!");
-        eel.say_hello_py("Javascript World!");  // Call a Python function
+ 
         
         </script>
     </head>
     
     <body>
         <div class="pywebview-drag-region">Hello World</div>
+        <h2 id="test">Test</h2>
+        <button onclick="myTest()">Get Altitude</button><p id="altitude">here goes the altitude</p>
     </body>
 </html>
