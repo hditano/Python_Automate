@@ -9,12 +9,15 @@ my_list = {}
 
 def simconnect_test():
     
+    pi = 22/7
     altitude = aq.get("PLANE_ALTITUDE")
     speed = aq.get("AIRSPEED_INDICATED")
     hdg = aq.get("PLANE_HEADING_DEGREES_TRUE")
+    radian = hdg
+    degree = radian*(180/pi)
     my_list['altitude'] = math.trunc(altitude)
     my_list['speed'] = math.trunc(speed)
-    my_list['hdg'] = hdg
+    my_list['hdg'] = degree
 
 sg.theme('DarkAmber')   # General Theme
 # Window Layout
