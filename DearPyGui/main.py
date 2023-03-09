@@ -12,9 +12,9 @@ LONG = ''
 LAT = ''
 my_map = {}
 
-frame = HtmlFrame(sg)
+#frame = HtmlFrame(sg)
 
-my_l = frame.load_website("http://www.google.com")
+#my_l = frame.load_website("http://www.google.com")
 
 def simconnect_test():
     
@@ -50,7 +50,7 @@ window = sg.Window('Window Title', layout, no_titlebar=True, grab_anywhere=True,
 # Main Event Loop
 
 start_time = int(round(time.time() * 500))
-mapview = window['html']
+#mapview = window['html']
 while True:
     simconnect_test()
     event, values = window.read(timeout=10)
@@ -58,7 +58,7 @@ while True:
     window['Input2'].update(my_list["altitude"])
     window['Input3'].update(my_list["speed"])
     window['Input4'].update(my_list["hdg"])
-    mapview.update(my_l)
+    #mapview.update(my_l)
     if event == sg.WIN_CLOSED or event == 'Cancel' or event == 'Input1': # if user closes window or clicks cancel
         break
     elif event == 'Max':

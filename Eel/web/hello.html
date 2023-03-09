@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title></title>
-        
-        <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
-        <script type="text/javascript" src="/eel.js"></script>
-        <script src="main.js"></script>
-        <script type="text/javascript">
- 
-        
-        </script>
-    </head>
-    
-    <body>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="main.js"></script>
+    <script type="text/javascript">
+
+
+    </script>
+</head>
+
+<body class="box">
+    <nav class="navbar is-light pywebview-drag-region" role="navigation">
+    </nav>
+    <div class="container has-background-grey-lighter is-max-desktop is-dark">
         <div class="pywebview-drag-region">Hello World</div>
         <h2 id="test">Test</h2>
-        <button onclick="myTest()">Get Altitude</button><p id="altitude">here goes the altitude</p>
-    </body>
+        <button class='button is-primary is-outlined' onclick="myMap()">Get Altitude</button>
+        <p id="altitude">here goes the altitude</p>
+        <p id="speed">here goes the speed</p>
+        <p id="longitude">here goes the longitude</p>
+        <p id="latitude">here goes the latitude</p>
+    </div>
+    <iframe src="map.html" id="google" width="400" height="400"></iframe>
+</body>
+
 </html>
