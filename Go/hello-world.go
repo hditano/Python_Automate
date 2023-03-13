@@ -20,6 +20,7 @@ func main() {
 	fmt.Println("Hernan")
 	fmt.Printf("Sebastian\n")
 
+
 	myFunc()
 
 	a := add(1, 1)
@@ -29,7 +30,6 @@ func main() {
 	b, c := nakedFunc()
 
 	fmt.Printf("%s and %s\n", b, c)
-
 }
 
 func myFunc() {

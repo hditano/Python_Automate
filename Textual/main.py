@@ -12,9 +12,11 @@ class StopwatchApp(App):
         yield Header()
         yield Footer()
 
+
     def action_toggle_dark(self) -> None:
         """An action to toggle dark mode."""
         self.dark = not self.dark
+        
 
 
 if __name__ == "__main__":
