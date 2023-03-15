@@ -26,8 +26,9 @@ def InitApp():
         print('You choose one')
         p1 = Init("Hernan")
         p1.view_entries()
-    else:
-        print('You choose two')
+    if my_input == '2':
+        p1 = Init("Hernan")
+        p1.add_entry()
 
 
 
@@ -36,8 +37,14 @@ class Init():
         self.user = user
         
     def add_entry(self) -> None:
-        pass
-
+        global ENTRIES
+        new_input = input("Please add a new record")
+        new_index = len(ENTRIES['data'].keys()) + 1
+        ENTRIES['data'].update({new_index : new_input})
+        print(ENTRIES)
+        
+        
+        
     def view_entries(self) -> None:
         os.system('cls')
         print('*** Your entries are ***'.center(75))
@@ -47,8 +54,6 @@ class Init():
                     print(item)
                 
        
-        
-    
         
 if __name__ == "__main__":
     InitApp()
