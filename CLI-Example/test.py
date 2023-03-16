@@ -1,5 +1,7 @@
 import os
+import time
 from datetime import datetime
+
 
 USER = os.getlogin()
 TIME = datetime.now().strftime("%H:%M:%S")
@@ -19,7 +21,7 @@ def InitApp():
     print('*** --------------------------***'.center(75))
     print('*** 1- View Entries           ***'.center(75))
     print('*** 2- Add Entries            ***'.center(75))
-    print(f'*** -- Choose an Option      ***'.center(75))
+    print('***  -- Choose an Option --   ***'.center(75))
     my_input = input()
 
     if my_input == '1':
@@ -38,11 +40,14 @@ class Init():
         
     def add_entry(self) -> None:
         global ENTRIES
-        new_input = input("Please add a new record")
+        new_input = input("Please add a new record: ")
         new_index = len(ENTRIES['data'].keys()) + 1
         ENTRIES['data'].update({new_index : new_input})
-        print(ENTRIES)
-        
+        print('Data added succesfully')
+        print('Loading Main Menu...')
+        time.sleep(2.0)
+        os.system('cls')
+        InitApp() 
         
         
     def view_entries(self) -> None:
@@ -52,6 +57,9 @@ class Init():
             if v == self.user:
                 for item in ENTRIES['data'].values():
                     print(item)
+        time.sleep(2.0)
+        os.system('cls')
+        InitApp()
                 
        
         
