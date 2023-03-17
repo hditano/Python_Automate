@@ -7,13 +7,6 @@ from sqlite3 import Error
 USER = os.getlogin()
 TIME = datetime.now().strftime("%H:%M:%S")
 
-ENTRIES = {
-    "name": "Hernan",
-    "data": {
-            1: "Test1",
-            2: "Test2",    
-        }
-    }
 
 def create_connection(db_file):
     conn = None
@@ -47,8 +40,10 @@ def fetch_data(db_file):
 def insert_data(db_file):
     con = sqlite3.connect(db_file)
     cur = con.cursor()
-    cur.execute("INSERT INTO users VALUES(1, 'Hernan', 'Esto es una prueba')")
-    cur.execute("INSERT INTO users VALUES(2, 'Seba', 'This is a test') ")
+    my_name = input("Please type your name: ")
+    my_data = input("Please type your text: ")
+    temp_data = (my_name, my_data)
+    cur.execute("INSERT INTO users (user, data) VALUES(? , ?)", temp_data)
     con.commit()
     con.close()
  
@@ -58,7 +53,6 @@ def InitApp():
     print('***  Please choose an option  ***'.center(75))
     print('*** --------------------------***'.center(75))
     print('*** 1- View Entries           ***'.center(75))
-    print('*** 2- Add Entries            ***'.center(75))
     print('*** 3- Add Data               ***'.center(75))
     print('*** 4- Check Database         ***'.center(75))
     print('*** 5- Create Table           ***'.center(75))
@@ -69,9 +63,6 @@ def InitApp():
         case '1':
             p1 = Init('Hernan')
             p1.view_entries()
-        case '2':
-            p1 = Init('Hernan')
-            p1.add_entry()
         case '3':
             insert_data('database.db')
         case '4':
@@ -83,18 +74,6 @@ def InitApp():
 class Init():
     def __init__(self, user) -> None:
         self.user = user
-        
-    def add_entry(self) -> None:
-        global ENTRIES
-        new_input = input("Please add a new record: ")
-        new_index = len(ENTRIES['data'].keys()) + 1
-        ENTRIES['data'].update({new_index : new_input})
-        print('Data added succesfully')
-        print('Loading Main Menu...')
-        time.sleep(2.0)
-        os.system('cls')
-        InitApp() 
-        
         
     def view_entries(self) -> None:
         os.system('cls')
