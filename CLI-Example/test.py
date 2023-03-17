@@ -46,6 +46,23 @@ def insert_data(db_file):
     cur.execute("INSERT INTO users (user, data) VALUES(? , ?)", temp_data)
     con.commit()
     con.close()
+    
+def users_profile(db_file):
+    os.system('cls')
+    con = sqlite3.connect(db_file)
+    cur = con.cursor()
+    cur.execute("SELECT user FROM users")
+    rec_table = cur.fetchall()
+    for row in rec_table:
+        print(row[0])
+    my_user = input("Please type your user: ")
+    temp_data = (my_user,)
+    cur.execute("SELECT * FROM users where user = ?", temp_data)
+    record = cur.fetchall()
+    for item in record:
+        print(f'Username: {item[1]}')
+        print(f'Data: {item[2]}')
+    con.close()
  
 def InitApp():
     print(f'Time: {TIME}'.ljust(0) + f'User: {USER}'.rjust(60))
@@ -53,6 +70,7 @@ def InitApp():
     print('***  Please choose an option  ***'.center(75))
     print('*** --------------------------***'.center(75))
     print('*** 1- View Entries           ***'.center(75))
+    print('*** 2- View Users Profile     ***'.center(75))
     print('*** 3- Add Data               ***'.center(75))
     print('*** 4- Check Database         ***'.center(75))
     print('*** 5- Create Table           ***'.center(75))
@@ -63,6 +81,8 @@ def InitApp():
         case '1':
             p1 = Init('Hernan')
             p1.view_entries()
+        case '2':
+            users_profile('database.db')
         case '3':
             insert_data('database.db')
         case '4':
